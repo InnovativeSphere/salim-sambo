@@ -1,11 +1,7 @@
-// ============================================================
-// src/app/frontend/page.tsx
-// ============================================================
-
 import type { Metadata } from "next";
 import StackLayout from "@/components/layout/StackLayout";
 import StackPage from "@/components/sections/StackPage";
-import { stackRoutes } from "@/data/content";
+import { stacks, getProjectsByStack } from "@/data/stack";
 
 export const metadata: Metadata = {
   title: "Frontend",
@@ -14,10 +10,11 @@ export const metadata: Metadata = {
 };
 
 export default function FrontendPage() {
-  const stack = stackRoutes.find((s) => s.slug === "frontend")!;
+  const stack = stacks.frontend;
+  const projects = getProjectsByStack("frontend");
   return (
     <StackLayout stackSlug="frontend">
-      <StackPage stack={stack} />
+      <StackPage stack={stack} projects={projects} />
     </StackLayout>
   );
 }

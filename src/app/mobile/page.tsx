@@ -1,11 +1,7 @@
-// ============================================================
-// src/app/mobile/page.tsx
-// ============================================================
-
 import type { Metadata } from "next";
 import StackLayout from "@/components/layout/StackLayout";
 import StackPage from "@/components/sections/StackPage";
-import { stackRoutes } from "@/data/content";
+import { stacks, getProjectsByStack } from "@/data/stack";
 
 export const metadata: Metadata = {
   title: "Mobile",
@@ -14,10 +10,11 @@ export const metadata: Metadata = {
 };
 
 export default function MobilePage() {
-  const stack = stackRoutes.find((s) => s.slug === "mobile")!;
+  const stack = stacks.mobile;
+  const projects = getProjectsByStack("mobile");
   return (
     <StackLayout stackSlug="mobile">
-      <StackPage stack={stack} />
+      <StackPage stack={stack} projects={projects} />
     </StackLayout>
   );
 }

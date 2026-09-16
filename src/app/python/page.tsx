@@ -1,11 +1,7 @@
-// ============================================================
-// src/app/python/page.tsx
-// ============================================================
-
 import type { Metadata } from "next";
 import StackLayout from "@/components/layout/StackLayout";
 import StackPage from "@/components/sections/StackPage";
-import { stackRoutes } from "@/data/content";
+import { stacks, getProjectsByStack } from "@/data/stack";
 
 export const metadata: Metadata = {
   title: "Python & AI",
@@ -14,10 +10,11 @@ export const metadata: Metadata = {
 };
 
 export default function PythonPage() {
-  const stack = stackRoutes.find((s) => s.slug === "python")!;
+  const stack = stacks.python;
+  const projects = getProjectsByStack("python");
   return (
     <StackLayout stackSlug="python">
-      <StackPage stack={stack} />
+      <StackPage stack={stack} projects={projects} />
     </StackLayout>
   );
 }

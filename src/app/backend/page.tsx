@@ -1,11 +1,7 @@
-// ============================================================
-// src/app/backend/page.tsx
-// ============================================================
-
 import type { Metadata } from "next";
 import StackLayout from "@/components/layout/StackLayout";
 import StackPage from "@/components/sections/StackPage";
-import { stackRoutes } from "@/data/content";
+import { stacks, getProjectsByStack } from "@/data/stack";
 
 export const metadata: Metadata = {
   title: "Backend",
@@ -14,10 +10,11 @@ export const metadata: Metadata = {
 };
 
 export default function BackendPage() {
-  const stack = stackRoutes.find((s) => s.slug === "backend")!;
+  const stack = stacks.backend;
+  const projects = getProjectsByStack("backend");
   return (
     <StackLayout stackSlug="backend">
-      <StackPage stack={stack} />
+      <StackPage stack={stack} projects={projects} />
     </StackLayout>
   );
 }

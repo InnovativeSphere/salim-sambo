@@ -1,6 +1,6 @@
 // ============================================================
 // src/components/sections/AlsoAvailable.tsx
-// "Also Available" — versatility section, links to stack routes
+// Versatility section + pull-quote closing statement
 // ============================================================
 
 "use client";
@@ -24,7 +24,7 @@ export default function AlsoAvailable() {
           description={alsoAvailableSection.intro}
         />
 
-        {/* Offerings grid — each card links to its stack route */}
+        {/* Offerings grid */}
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {alsoAvailableSection.offerings.map((offering) => {
             const accent = stackAccents[offering.slug] ?? stackAccents.default;
@@ -47,13 +47,11 @@ export default function AlsoAvailable() {
                   e.currentTarget.style.boxShadow = "none";
                 }}
               >
-                {/* Accent top border (always visible) */}
                 <span
                   className="absolute top-0 left-0 right-0 h-[3px]"
                   style={{ backgroundColor: accent.accent }}
                 />
 
-                {/* Header row — number + arrow */}
                 <div className="flex items-start justify-between mb-5 pt-1">
                   <span
                     className="text-[10px] font-mono font-bold uppercase tracking-widest"
@@ -73,7 +71,6 @@ export default function AlsoAvailable() {
                   </span>
                 </div>
 
-                {/* Label */}
                 <h3
                   className="text-base font-semibold tracking-tight mb-2"
                   style={{ color: "var(--color-text-primary)" }}
@@ -81,7 +78,6 @@ export default function AlsoAvailable() {
                   {offering.label}
                 </h3>
 
-                {/* Detail */}
                 <p
                   className="text-sm leading-relaxed"
                   style={{ color: "var(--color-text-secondary)" }}
@@ -89,7 +85,6 @@ export default function AlsoAvailable() {
                   {offering.detail}
                 </p>
 
-                {/* Bottom hint */}
                 <div
                   className="mt-5 pt-4 flex items-center gap-1.5 text-xs font-medium transition-opacity duration-300 opacity-0 group-hover:opacity-100"
                   style={{
@@ -115,20 +110,46 @@ export default function AlsoAvailable() {
           </p>
         )}
 
-        {/* Closing line */}
-        <div
-          className="mt-14 p-8 md:p-10 rounded-2xl"
-          style={{
-            backgroundColor: "var(--color-bg-primary)",
-            borderLeft: "3px solid var(--color-accent)",
-          }}
-        >
-          <p
-            className="text-lg md:text-xl leading-relaxed font-medium max-w-3xl"
-            style={{ color: "var(--color-text-primary)" }}
-          >
-            {alsoAvailableSection.closingLine}
-          </p>
+        {/* Pull-quote closing statement */}
+        <div className="mt-24 md:mt-28">
+          <div className="relative max-w-3xl mx-auto px-6">
+            {/* Decorative quote mark */}
+            <span
+              aria-hidden="true"
+              className="absolute -top-10 left-0 font-serif select-none pointer-events-none"
+              style={{
+                fontSize: "clamp(140px, 20vw, 220px)",
+                lineHeight: 0.8,
+                color: "var(--color-accent)",
+                opacity: 0.1,
+              }}
+            >
+              &ldquo;
+            </span>
+
+            <blockquote className="relative">
+              <p
+                className="text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight leading-[1.35]"
+                style={{ color: "var(--color-text-primary)" }}
+              >
+                {alsoAvailableSection.closingLine}
+              </p>
+
+              {/* Signature */}
+              <footer className="mt-10 flex items-center gap-4">
+                <span
+                  className="h-px w-12"
+                  style={{ backgroundColor: "var(--color-accent)" }}
+                />
+                <span
+                  className="text-xs font-mono uppercase tracking-widest"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  Salim Sambo · Nigeria
+                </span>
+              </footer>
+            </blockquote>
+          </div>
         </div>
       </div>
     </section>

@@ -11,6 +11,7 @@ import Process from "@/components/sections/Process";
 import Demo from "@/components/sections/Demo";
 import CaseStudies from "@/components/sections/CaseStudies";
 import AlsoAvailable from "@/components/sections/AlsoAvailable";
+import CrossStackPills from "@/components/sections/CrossStackPills";
 import FAQ from "@/components/sections/FAQ";
 import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
@@ -26,6 +27,7 @@ export default function HomePage() {
         <Demo />
         <CaseStudies />
         <AlsoAvailable />
+        <CrossStackPills />
         <FAQ />
         <About />
         <Contact />

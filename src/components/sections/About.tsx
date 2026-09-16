@@ -1,6 +1,6 @@
 // ============================================================
 // src/components/sections/About.tsx
-// "About" — headshot + short story
+// Headshot + story + signature-style closing statement
 // ============================================================
 
 import Image from "next/image";
@@ -17,10 +17,9 @@ export default function About() {
     >
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* ==================== LEFT — HEADSHOT ==================== */}
+          {/* LEFT — headshot */}
           <div className="lg:col-span-5">
             <div className="relative">
-              {/* Headshot with gold-accent frame effect */}
               <div
                 className="relative rounded-2xl overflow-hidden"
                 style={{
@@ -38,7 +37,6 @@ export default function About() {
                 />
               </div>
 
-              {/* Floating badge */}
               <div
                 className="absolute -bottom-5 left-6 flex items-center gap-3 px-4 py-3 rounded-xl shadow-lg"
                 style={{
@@ -73,7 +71,7 @@ export default function About() {
             </div>
           </div>
 
-          {/* ==================== RIGHT — STORY ==================== */}
+          {/* RIGHT — story */}
           <div className="lg:col-span-7 lg:pt-4">
             <SectionHeading eyebrow="About" title={aboutSection.heading} />
 
@@ -88,22 +86,41 @@ export default function About() {
                 </p>
               ))}
             </div>
+          </div>
+        </div>
 
-            {/* Closing line — accent block */}
-            <div
-              className="mt-10 p-6 rounded-2xl"
-              style={{
-                backgroundColor: "var(--color-bg-primary)",
-                borderLeft: "3px solid var(--color-accent)",
-              }}
+        {/* FULL-WIDTH SIGNATURE CLOSING */}
+        <div className="mt-24 md:mt-28">
+          <div className="max-w-3xl mx-auto text-center">
+            <span
+              className="inline-block text-[10px] font-mono uppercase tracking-[0.3em] mb-6"
+              style={{ color: "var(--color-accent)" }}
             >
-              <p
-                className="text-lg md:text-xl font-medium leading-snug"
-                style={{ color: "var(--color-text-primary)" }}
-              >
-                {aboutSection.closingLine}
-              </p>
+              The Invitation
+            </span>
+
+            <p
+              className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.15]"
+              style={{ color: "var(--color-text-primary)" }}
+            >
+              {aboutSection.closingLine}
+            </p>
+
+            {/* Animated accent underline */}
+            <div className="mt-10 flex justify-center">
+              <span
+                className="block h-[3px] w-24 rounded-full"
+                style={{ backgroundColor: "var(--color-accent)" }}
+              />
             </div>
+
+            {/* Small kicker */}
+            <p
+              className="mt-6 text-sm font-medium"
+              style={{ color: "var(--color-text-muted)" }}
+            >
+              Whether it's a script, a system, or something in between.
+            </p>
           </div>
         </div>
       </div>

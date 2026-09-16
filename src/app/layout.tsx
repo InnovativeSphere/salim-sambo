@@ -1,10 +1,11 @@
 // ============================================================
 // src/app/layout.tsx
-// Root layout — fonts, metadata, global UI overlays
+// Root layout — fonts, metadata, global UI, analytics
 // ============================================================
 
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 import { siteConfig } from "@/data/content";
@@ -80,11 +81,14 @@ export default function RootLayout({
         className="antialiased"
         style={themeToCssVarsObject("default")}
       >
-        {/* Global overlays — available on every route */}
+        {/* Global overlays */}
         <ScrollProgress />
         <CommandPalette />
 
         {children}
+
+        {/* Vercel Analytics — tracks page views + Web Vitals */}
+        <Analytics />
       </body>
     </html>
   );
