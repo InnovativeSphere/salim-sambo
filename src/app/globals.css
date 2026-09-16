@@ -1,0 +1,152 @@
+/* ============================================================
+   src/app/globals.css
+   Tailwind + Global Design System
+   ============================================================ */
+
+@import "tailwindcss";
+
+/* ==========================================
+   1. DESIGN TOKENS (CSS variables)
+   These are the defaults. Stack routes override them via 
+   inline style attribute using themeToCssVarsObject().
+   ========================================== */
+
+:root {
+  /* Text */
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #4A4A4A;
+  --color-text-muted: #9A9A9A;
+  --color-text-inverse: #FFFFFF;
+
+  /* Backgrounds */
+  --color-bg-primary: #FFFFFF;
+  --color-bg-subtle: #FAFAFA;
+  --color-bg-inverse: #1A1A1A;
+
+  /* Borders */
+  --color-border: #E5E5E5;
+  --color-border-hover: #9A9A9A;
+
+  /* Accent (default = Python blue) */
+  --color-accent: #3B7DD8;
+  --color-accent-light: #E5F0FF;
+  --color-accent-hover: #2D63B0;
+  --color-accent-text: #FFFFFF;
+
+  /* Fonts (populated by next/font in layout.tsx) */
+  --font-body: var(--font-inter, system-ui, -apple-system, sans-serif);
+  --font-mono: var(--font-jetbrains-mono, "Courier New", monospace);
+}
+
+/* ==========================================
+   2. BASE STYLES
+   ========================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* offset for sticky header */
+}
+
+body {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   3. SELECTION & SCROLLBAR
+   ========================================== */
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-subtle);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-hover);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+/* ==========================================
+   4. TYPOGRAPHY HELPERS
+   ========================================== */
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Prevent layout shift from long headlines */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* ==========================================
+   5. ANIMATIONS
+   ========================================== */
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Subtle pulse for status indicators */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Slow shimmer for premium accents */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-accent-light),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* ==========================================
+   6. FOCUS STATES (accessibility)
+   ========================================== */
+
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
